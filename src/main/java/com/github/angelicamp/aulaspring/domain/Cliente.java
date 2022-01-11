@@ -7,13 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cliente {
+public class Cliente implements Serializable {
+    private static final long serialVersionUID =1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -28,6 +30,8 @@ public class Cliente {
     @ElementCollection
     @CollectionTable(name = "TELEFONE")
     private Set<String> telefones = new HashSet<>();
+
+    private List<Pedido> pedidos = new ArrayList<>();
 
     @Override
     public boolean equals(Object o) {
