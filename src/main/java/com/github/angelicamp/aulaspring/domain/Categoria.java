@@ -3,7 +3,6 @@ package com.github.angelicamp.aulaspring.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,10 +11,10 @@ import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Categoria implements Serializable {
     private static final long serialVersionUID =1L;
 
