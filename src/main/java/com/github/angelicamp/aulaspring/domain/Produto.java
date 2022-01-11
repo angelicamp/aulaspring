@@ -1,6 +1,7 @@
 package com.github.angelicamp.aulaspring.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,9 @@ public class Produto implements Serializable {
     private String nome;
     private Double produto;
 
+
     @ManyToMany
+    @JsonBackReference
     @JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"),inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private List<Categoria> categorias = new ArrayList<>();
 
