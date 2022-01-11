@@ -1,5 +1,6 @@
 package com.github.angelicamp.aulaspring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.github.angelicamp.aulaspring.domain.Cliente;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,8 @@ public class Endereco {
     private String complemento;
     private String bairro;
     private String cep;
+
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;

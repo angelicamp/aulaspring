@@ -1,5 +1,6 @@
 package com.github.angelicamp.aulaspring.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.github.angelicamp.aulaspring.domain.enums.TipoCliente;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +21,8 @@ public class Cliente {
     private String email;
     private String cpfOuCnpj;
     private TipoCliente tipoCliente;
+
+    @JsonManagedReference
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
     @ElementCollection
