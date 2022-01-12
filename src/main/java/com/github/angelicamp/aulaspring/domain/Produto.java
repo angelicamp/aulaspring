@@ -8,9 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 
 @Data
@@ -27,12 +25,22 @@ public class Produto implements Serializable {
     private String nome;
     private Double produto;
 
+    private Set<ItemPedido> itens= new HashSet<>();
+
+
 
     @ManyToMany
     @JsonBackReference
     @JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"),inverseJoinColumns = @JoinColumn(name = "categoria_id"))
     private List<Categoria> categorias = new ArrayList<>();
 
+    public List<Pedido> getPedidos(){
+        List<Pedido> lista = new ArrayList<>();
+        for (ItemPedido x: itens){
+            lista.add(x.getPedido());
+        }
+        return lista;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

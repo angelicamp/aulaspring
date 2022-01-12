@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Data
@@ -19,6 +21,8 @@ public class Pedido implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date instante;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido")
@@ -31,6 +35,8 @@ public class Pedido implements Serializable {
     @ManyToOne
     @JoinColumn(name = "endereçoDeEntrega_id")
     private Endereco enderecoDeEntrega;
+
+    private Set<ItemPedido> itens= new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
