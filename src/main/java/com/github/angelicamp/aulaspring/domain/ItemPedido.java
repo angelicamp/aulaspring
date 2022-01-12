@@ -4,14 +4,19 @@ package com.github.angelicamp.aulaspring.domain;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Objects;
 
 @AllArgsConstructor
+@Entity
 public class ItemPedido implements Serializable {
     private static final long serialVersionUID =1L;
 
+    @EmbeddedId
     private ItemPedidoPK id = new ItemPedidoPK();
+
     private Double desconto;
     private Integer quantidade;
     private Double preco;
