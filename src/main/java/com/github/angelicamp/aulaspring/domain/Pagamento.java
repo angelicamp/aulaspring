@@ -1,5 +1,6 @@
 package com.github.angelicamp.aulaspring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.github.angelicamp.aulaspring.domain.enums.EstadoPagamento;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,6 +25,7 @@ public abstract class Pagamento implements Serializable {
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId
+    @JsonBackReference
     private Pedido pedido;
 
     @Override

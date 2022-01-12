@@ -1,5 +1,6 @@
 package com.github.angelicamp.aulaspring.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.github.angelicamp.aulaspring.domain.enums.TipoCliente;
 import lombok.AllArgsConstructor;
@@ -32,6 +33,7 @@ public class Cliente implements Serializable {
     private Set<String> telefones = new HashSet<>();
 
     @OneToMany(mappedBy = "cliente")
+    @JsonBackReference
     private List<Pedido> pedidos = new ArrayList<>();
 
     @Override

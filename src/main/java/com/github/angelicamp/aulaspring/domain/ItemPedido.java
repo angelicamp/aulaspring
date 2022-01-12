@@ -11,17 +11,6 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @AllArgsConstructor
-@Entity
-public class ItemPedido implements Serializable {
-    private static final long serialVersionUID = 1L;
-
-    @EmbeddedId
-    private ItemPedidoPK id = new ItemPedidoPK();
-
-    private Double desconto;
-    private Integer quantidade;
-    private Double preco;
-
     @Entity
     public class ItemPedido implements Serializable {
         private static final long serialVersionUID = 1L;
@@ -111,4 +100,3 @@ public class ItemPedido implements Serializable {
             return true;
         }
     }
-}
